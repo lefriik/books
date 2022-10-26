@@ -1,7 +1,7 @@
 
 from django.shortcuts import render, redirect, get_object_or_404
 
-from .models import Book
+from .models import Book, Author
 from .forms import BookForm
 
 
@@ -13,7 +13,8 @@ def genre_list(request):
   return render(request, 'library/genre_list.html')
 
 def autor_list(request):
-  return render(request, 'library/autor_list.html')
+  autores = Author.objects.all()
+  return render(request, 'library/autor_list.html', {'autores': autores})
 
 def publisher_list(request):
   return render(request, 'library/publisher_list.html') 
