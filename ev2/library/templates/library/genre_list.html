@@ -2,6 +2,86 @@
 
 {% load static %}
 
-{% block title %}Genero{% endblock title %}
+{% block title %}Autor{% endblock title %}
 
-{% block content %}Genero{% endblock content %}
+
+{% block content %}
+<section
+  class="antialiased bg-gray-100 text-gray-600 h-screen px-4"
+  x-data="app"
+>
+  <div class="flex flex-col justify-center h-full">
+    <!-- Table -->
+    <div
+      class="w-full max-w-2xl mx-auto bg-white shadow-lg rounded-sm border border-gray-200"
+    >
+    <header class="px-5 py-4 border-b border-gray-100">
+      <div class="flex justify-content-between align-items-center">
+
+        <div class="">
+          <p class="font-semibold text-gray-800 ">Genero</p>
+        </div>
+        
+
+        <div class="justify-right my-8 select-none  ">
+          <a class="" href="#">
+            <button class="py-1 px-2 shadow-md no-underline rounded-full bg-black text-white font-sans font-semibold text-sm border-blue btn-primary hover:text-white hover:bg-red-300 focus:outline-none active:shadow-none mr-2 w-full">+Nuevo</button>
+          </a>
+        </div>
+      </div>
+      
+    </header>
+
+      <div class="overflow-x-auto p-3">
+        <table class="table-auto w-full">
+          <thead
+            class="text-xs font-semibold uppercase text-gray-400 bg-gray-50"
+          >
+            <tr>
+              <th class="p-2">
+                <div class="font-semibold text-left">ID</div>
+              </th>
+              <th class="p-2">
+                <div class="font-semibold text-left">Nombre</div>
+              </th>
+            </tr>
+          </thead>
+
+          <tbody class="text-sm divide-y divide-gray-100">
+           
+            {% for genre in genre_list %}
+            <tr>
+              <td class="p-2">
+                <div class="font-medium text-gray-800">{{ genre.id }}</div>
+              </td>
+              <td class="p-2">
+                <div class="text-left">{{ genre.name }}</div>
+              </td>
+              
+              <td class="p-2 d-flex">
+                <a href="#">
+                  <button class="py-1 px-2 shadow-md no-underline rounded-full bg-blue-500 text-white font-sans font-semibold text-sm border-blue btn-primary hover:text-white hover:bg-blue-200 focus:outline-none active:shadow-none mr-2">detalles</button>
+                </a>
+                <a href="#">
+                  <button class="py-1 px-2 shadow-md no-underline rounded-full bg-purple-500 text-white font-sans font-semibold text-sm border-blue btn-primary hover:text-white hover:bg-purple-200 focus:outline-none active:shadow-none mr-2">editar</button>
+                </a>
+                <form method="post" action="#">
+                  {% csrf_token %}
+                  <button type="submit"  value="Delete" class="py-1 px-2 shadow-md no-underline rounded-full bg-zinc-500 text-white font-sans font-semibold text-sm border-blue btn-primary hover:text-white hover:bg-zinc-200 focus:outline-none active:shadow-none mr-2">eliminar</button>
+                </form>
+              </td>
+            </tr>
+            {% empty %}
+            <tr>
+              No hay genero.
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+  </div>
+</section>
+
+
+
+{% endblock %}

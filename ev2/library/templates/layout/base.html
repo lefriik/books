@@ -11,37 +11,31 @@
     <title>{% block title %}{% endblock title %}</title>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body>
-    <!-- Nav tabs -->
-    <ul class="nav nav-tabs" id="navId" role="tablist">
-      <li class="nav-item">
-        <a href="{% url 'book_list' %}" class="nav-link active" aria-current="page">Libro</a>
+
+  <header>
+    <ul class="flex border-b bg-black">
+      <li class="-mb-px mr-1">
+        <a class="bg-black inline-block  rounded-t py-2 px-4 text-white font-semibold" href="{% url 'book_list' %}">Libros</a>
       </li>
-      <li class="nav-item" role="presentation">
-        <a href="{% url 'genre_list' %}" class="nav-link" >Genero</a>
+      <li class="mr-1">
+        <a class="bg-black inline-block py-2 px-4 text-white hover:text-blue-800 font-semibold" href="{% url 'genre_list' %}">Genero</a>
       </li>
-      <li class="nav-item" role="presentation">
-        <a href="{% url 'autor_list' %}" class="nav-link" >Autor</a>
+      <li class="mr-1">
+        <a class="bg-black inline-block py-2 px-4 text-white hover:text-blue-800 font-semibold" href="{% url 'autor_list' %}">Autor</a>
       </li>
-      <li class="nav-item" role="presentation">
-        <a href="{% url 'publisher_list' %}" class="nav-link" >Editorial</a>
+      <li class="mr-1">
+        <a class="bg-black inline-block py-2 px-4 text-white font-semibold" href="{% url 'publisher_list' %}">Editorial</a>
       </li>
     </ul>
+
+
+  </header>
+  <body>
+
     
-    <!-- Tab panes -->
-    <div class="tab-content" id="myTabContent">
-      <div class="tab-pane fade show active" id="tab1Id" role="tabpanel"></div>
-      <div class="tab-pane fade" id="tab2Id" role="tabpanel"></div>
-      <div class="tab-pane fade" id="tab3Id" role="tabpanel"></div>
-      <div class="tab-pane fade" id="tab4Id" role="tabpanel"></div>
-      <div class="tab-pane fade" id="tab5Id" role="tabpanel"></div>
-    </div>
+ 
     
-    <!-- (Optional) - Place this js code after initializing bootstrap.min.js or bootstrap.bundle.min.js -->
-    <script>
-      var triggerEl = document.querySelector('#navId a')
-      bootstrap.Tab.getInstance(triggerEl).show() // Select tab by name
-    </script>
+    
     
     {% block content %} {% endblock %}
 
