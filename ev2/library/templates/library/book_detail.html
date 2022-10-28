@@ -1,0 +1,60 @@
+{% extends '../layout/base.html' %} {% block content %}
+<section
+  class="antialiased bg-gray-100 text-gray-600 h-screen px-4"
+  x-data="app"
+>
+  <div class="flex flex-col justify-center h-full">
+    <!-- Table -->
+    <div
+      class="w-full max-w-2xl mx-auto bg-white shadow-lg rounded-sm border border-gray-200"
+    >
+      <header class="px-5 py-4 border-b border-gray-100 flex justify-content-between align-items-center">
+        <div class="font-semibold text-gray-800">Detalle Libro</div>
+        <div class="justify-right my-8 select-none flex">
+          <a href="{% url 'book_list' %}">
+            <button class="py-1 px-2 shadow-md no-underline rounded-md bg-black text-white font-sans font-semibold text-sm border-blue btn-primary hover:text-white hover:bg-red-300 focus:outline-none active:shadow-none mr-2">Volver</button>
+          </a>
+        </div>
+      </header>
+
+      <div class="overflow-x-auto p-3">
+        <table class="table-auto w-full">
+          <tbody class="text-sm divide-y divide-gray-100">
+            <tr>
+              <td class="p-2">
+                <div class="font-medium text-gray-800">Libro ID</div>
+              </td>
+              <td class="p-2">
+                <div class="font-medium text-gray-800">{{ book.id }}</div>
+              </td>
+            </tr>
+            <tr>
+              <td class="p-2">
+                <div class="font-medium text-gray-800">Autor</div>
+              </td>
+              <td class="p-2">
+                <div class="font-medium text-gray-800">{{ book.author_fk  }}</div>
+              </td>
+            </tr>
+            <tr>
+              <td class="p-2">
+                <div class="font-medium text-gray-800">Genero</div>
+              </td>
+              <td class="p-2">
+                <div class="text-left">{{ book.genre_fk }}</div>
+              </td>
+            </tr>
+            <tr>
+              <td class="p-2">
+                <div class="font-medium text-gray-800">Editorial</div>
+              </td>
+              <td class="p-2">
+                <div class="font-medium text-gray-800">{{ book.publisher_fk  }}</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+</section>
+{% endblock %}
